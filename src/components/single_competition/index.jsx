@@ -79,7 +79,7 @@ export default class SingleCompetition extends Component {
           </div>
         </div>
         <div className={styles['footer']}>
-          <span>举办方: {organizer}</span>
+          <span>举办方:{organizer}</span>
         </div>
       </div>
     );
