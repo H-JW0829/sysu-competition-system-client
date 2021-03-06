@@ -21,7 +21,6 @@ export default class SettingForm extends Component {
   componentDidMount() {
     const fetchData = async () => {
       const { id } = this.props;
-      console.log(id, 'rrrr');
       const response = await post('/user/getUserInfoById', {
         id,
       });
@@ -45,7 +44,7 @@ export default class SettingForm extends Component {
       name,
       tel,
       role,
-      _id: this.props.id,
+      id: this.props.id,
       password: rsaPassword,
     };
     const response = await post('/user/userUpdateInfo', user);

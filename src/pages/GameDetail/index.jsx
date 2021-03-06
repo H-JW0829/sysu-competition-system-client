@@ -39,7 +39,7 @@ class CompetitionDetail extends Component {
     const user = JSON.parse(window.localStorage.getItem('user')); //获取用户信息
     const getCompetitionInfo = async () => {
       const response = await post(`/competition/find`, {
-        id: this.props.match.params.id,
+        competitionId: this.props.match.params.id,
       });
       // console.log('比赛信息', response);
       if (response.code === 0) {
