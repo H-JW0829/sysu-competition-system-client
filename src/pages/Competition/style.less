@@ -1,0 +1,20 @@
+@import '../../commons/commonVar.less';
+
+@marginLeft : 6px;
+
+.page-container{
+
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+
+    .competition-list{
+        position: absolute;
+        height: calc(100% - @sideMarginTop);
+        width: calc(100vw - @sideWidth - @marginLeft);
+        margin-left: @sideWidth + 6px;
+        background-color: #f0f2f5;
+        margin-top: @sideMarginTop;
+    }
+}

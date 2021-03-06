@@ -1,0 +1,38 @@
+@import "../../commons/commonVar.less";
+// @primary-color: #1890ff;
+
+.page-container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+    .page-list{
+        margin-top: @headerHeight;
+        background-color:#fff;
+        // background: url('./topbg.png') no-repeat @primary-color right;
+        ul{
+            list-style: none;
+
+            li{
+                // display: inline;
+                // margin-left: 50px;
+                float: left;
+                height: 52px;
+                line-height: @pageListHeight;
+                width: 90px;
+                text-align: center;
+            }
+        }
+    }
+
+    .page-content{
+        flex: 1;
+        position: relative;
+        margin-top: 35px;
+    }
+}
+
+.active-link{
+    background-color: #f0f2f5;
+}

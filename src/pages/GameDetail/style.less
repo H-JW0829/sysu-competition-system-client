@@ -1,0 +1,57 @@
+@import '../../commons/commonVar.less';
+
+@marginTop : 25px;
+
+.container{
+    // height: calc(100vh  - @headerHeight);
+    background-color: #f0f2f5;
+    // margin-top: @marginTop;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .game-table{
+        width: 70%;
+        margin-right: 130px;
+        height: @tableHeight;
+        margin-top: @marginTop;
+    }
+
+    .signUp-container{
+        height: @tableHeight;
+        width: 120px;
+        position: absolute;
+        background-color: #fff;
+        top: @marginTop;
+        right: 155px;
+    }
+
+    .content-container{
+        background-color: #f0f2f5;
+        width: 78.8%;
+        margin-top: 20px;
+        // flex:1;
+        position: relative;
+        // display: flex;
+
+        .content{
+            // flex: 1;
+            // height: 100%;
+            width: 910px;
+            position: relative;
+            left:222px;
+            background-color: #fff;
+            top:-8px;
+            min-height: 490px;
+        }
+
+        // &:after{
+        //     content: "";
+        //     display: block;
+        //     clear: both;
+        //   }
+        // .useless{
+        //     clear: both;
+        // }
+    }
+}

@@ -1,0 +1,54 @@
+@import '../../../commons/commonVar.less';
+
+.container{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    // margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    // margin-right: 100px;
+
+    & > div{
+        display: flex;
+        flex-direction: column;
+
+        .key{
+            height: 50%;
+            border-bottom: 2px solid #f0f2f5;
+            font-size: 14px;
+            font-weight: 400;
+            color: #666;
+        }
+
+        .value{
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        & >div{
+            text-align: center;
+            line-height: @tableHeight / 2;
+        }
+    }
+
+    .name{
+        flex:4;
+    }
+
+    .status{
+        flex:1;
+    }
+
+    .teams{
+        flex:1;
+    }
+
+    .time{
+        flex:2;
+    }
+
+    .peoples{
+        flex:1
+    }
+}
