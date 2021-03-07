@@ -14,14 +14,7 @@ const { confirm } = Modal;
 
 export default class Submit extends Component {
   state = {
-    fileList: [
-      //   {
-      //     uid: '-1',
-      //     name: 'xxx.png',
-      //     status: 'done',
-      //     url: 'http://www.baidu.com/xxx.png',
-      //   },
-    ],
+    fileList: [],
     teamId: '',
     competitionId: '',
   };
@@ -50,17 +43,6 @@ export default class Submit extends Component {
   }
 
   handleChange = async (info) => {
-    // console.log('=====?????', info);
-    // if (info.fileList.length === 0) {
-    //   //删除
-    //   const cdnResponse = await post(
-    //     `http://localhost:3000/uploadToGuochuangyun?s=App.CDN.Delete&app_key=5687BCD24AA4D3C1ED073F5C8AC17C6B&url=${this.state.fileList[0].url}`,
-    //     {},
-    //     true
-    //   );
-    //   this.setState({ fileList: [] });
-    // }
-
     const fileUrl = info.file?.response?.data?.url;
     if (fileUrl) {
       if (this.state.fileList.length > 0) {
@@ -91,24 +73,12 @@ export default class Submit extends Component {
           size: info.file.size,
         },
       });
-      message.success('上传成功', 1);
+      if (response.code === 0) {
+        message.success('上传成功', 1);
+      } else {
+        message.error('上传失败', 1);
+      }
     }
-    // let fileList = [...info.fileList];
-
-    // // 1. Limit the number of uploaded files
-    // // Only to show two recent uploaded files, and old ones will be replaced by the new
-    // fileList = fileList.slice(-1);
-    // // 2. Read from response and show file link
-    // fileList = fileList.map((file) => {
-    //   if (file.response) {
-    //     // Component will show file.url as link
-    //     file.url = file.response.url;
-    //     message.success('上传成功', 1);
-    //   }
-    //   return file;
-    // });
-
-    // this.setState({ fileList });
   };
 
   removeFile = (info) => {

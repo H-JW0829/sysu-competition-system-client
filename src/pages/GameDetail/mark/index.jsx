@@ -16,21 +16,6 @@ export default class Mark extends Component {
     pageSize: 5,
   };
 
-  dataSource = [
-    {
-      key: '1',
-      team: '湖人队',
-      appendix: '啊啊啊啊',
-      score: '-',
-    },
-    {
-      key: '2',
-      team: '勇士队',
-      appendix: '啊啊啊啊',
-      score: '-',
-    },
-  ];
-
   columns = [
     {
       title: '队伍',
@@ -50,12 +35,16 @@ export default class Mark extends Component {
       key: 'appendix',
       render: (text, record) => {
         const { appendix } = record;
-        return (
+        return appendix.url ? (
           <Space size="middle">
             {/* <a onClick={() => this.edit(record._id)}>aaa</a> */}
             <a href={appendix.url} download={appendix.name}>
               点击下载
             </a>
+          </Space>
+        ) : (
+          <Space size="middle">
+            <span>未提交</span>
           </Space>
         );
       },
