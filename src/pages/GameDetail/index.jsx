@@ -135,7 +135,7 @@ class CompetitionDetail extends Component {
     if (isSuccess) {
       let competition = { ...this.state.competition };
       competition.team_num += 1;
-      this.setState({ competition });
+      this.setState({ competition, status: STATUS.SIGNUP });
       message.success('报名成功', 2);
       setTimeout(() => {
         this.setState({ showSignUpModal: false });

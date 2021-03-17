@@ -22,7 +22,7 @@ export default class SignUpForm extends Component {
   };
 
   handleSubmit = async (values) => {
-    console.log(values);
+    console.log(values, 'www');
     const users = values.users;
     for (let i = 0; i < users.length; i++) {
       users[i].isCaptain = false;

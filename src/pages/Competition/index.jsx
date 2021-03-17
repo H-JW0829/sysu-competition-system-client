@@ -88,11 +88,11 @@ class Competition extends Component {
   }
 
   getCompetitions = () => {
-    const tag = this.props.match.params.tag;
+    const tag = this.props.match.params.tag; //获取到tag
     const { allCompetitions, signUpCompetition } = this.state;
-    if (tag === 'all') return allCompetitions;
-    if (tag === 'my') return signUpCompetition;
-    const status = tag == 'before' ? 0 : tag == 'active' ? 1 : 2;
+    if (tag === 'all') return allCompetitions; //返回所有竞赛
+    if (tag === 'my') return signUpCompetition; //返回1⃣️报名竞赛
+    const status = tag == 'before' ? 0 : tag == 'active' ? 1 : 2; //返回对应状态（未开始、进行中、已结束）的竞赛
     return allCompetitions.filter((competition) => {
       return competition.status == status;
     });

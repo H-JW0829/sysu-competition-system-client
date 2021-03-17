@@ -32,8 +32,8 @@ export default class Submit extends Component {
         const { code, data } = response;
         if (data.code === 0) {
           let fileList = [];
-          const { uid, name, url } = data.appendix;
-          let file = { uid, name, url, status: 'done' };
+          const { uid, name, url, _id } = data.appendix;
+          let file = { uid, name, url, _id, status: 'done' };
           fileList.push(file);
           this.setState({ fileList });
         }
@@ -45,6 +45,14 @@ export default class Submit extends Component {
   handleChange = async (info) => {
     const fileUrl = info.file?.response?.data?.url;
     if (fileUrl) {
+      let fileList = [];
+      let file = {
+        uid: info.file.uid,
+        name: info.file.name,
+        url: fileUrl,
+        status: 'done',
+        _id: this.state.fileList[0]?._id,
+      };
       if (this.state.fileList.length > 0) {
         //删除之前的file
         const cdnResponse = await post(
@@ -52,31 +60,44 @@ export default class Submit extends Component {
           {},
           true
         );
-      }
-      let fileList = [];
-      let file = {
-        uid: info.file.uid,
-        name: info.file.name,
-        url: fileUrl,
-        status: 'done',
-      };
-      fileList.push(file);
-      this.setState({ fileList });
-      const response = await post(`/competition/submitAppendix`, {
-        competitionId: this.props.competition._id,
-        teamId: this.props.teamId,
-        appendix: {
-          name: info.file.name,
-          url: fileUrl,
-          fileType: info.file.type,
-          uid: info.file.uid,
-          size: info.file.size,
-        },
-      });
-      if (response.code === 0) {
-        message.success('上传成功', 1);
+        fileList.push(file);
+        this.setState({ fileList });
+        const response = await post(`/competition/updateAppendix`, {
+          newAppendix: {
+            name: info.file.name,
+            url: fileUrl,
+            fileType: info.file.type,
+            uid: info.file.uid,
+            size: info.file.size,
+            id: this.state.fileList[0]._id,
+          },
+        });
+        if (response.code === 0) {
+          message.success('上传成功', 1);
+        } else {
+          message.error('上传失败', 1);
+        }
       } else {
-        message.error('上传失败', 1);
+        //提交作品
+        const response = await post(`/competition/submitAppendix`, {
+          competitionId: this.props.competition._id,
+          teamId: this.props.teamId,
+          newAppendix: {
+            name: info.file.name,
+            url: fileUrl,
+            fileType: info.file.type,
+            uid: info.file.uid,
+            size: info.file.size,
+          },
+        });
+        if (response.code === 0) {
+          file._id = response.data.appendix._id;
+          fileList.push(file);
+          this.setState({ fileList });
+          message.success('上传成功', 1);
+        } else {
+          message.error('上传失败', 1);
+        }
       }
     }
   };
@@ -98,8 +119,7 @@ export default class Submit extends Component {
           if (cdnResponse.ret === 200) {
             //cdn删除成功，删除数据库
             const response = await post('/competition/deleteAppendix', {
-              competitionId: _this.props.competition._id,
-              teamId: _this.props.teamId,
+              appendixId: _this.state.fileList[0]._id,
             });
             if (response.code === 0) {
               message.success('删除成功', 1);
@@ -118,10 +138,6 @@ export default class Submit extends Component {
 
   render() {
     const { isCaptain, appendix, competition, status } = this.props;
-    // this.setState({
-    //   competitionId: this.props.competitionId,
-    //   teamId: this.props.teamId,
-    // });
     return status === STATUS.SIGNUP ? (
       isCaptain ? (
         <div>

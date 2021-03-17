@@ -137,7 +137,11 @@ export default class HeaderUser extends Component {
           <span className={styles['account']}>
             <span className={styles['user-name']}>
               {userInfo.name}({userInfo.staffId})&nbsp;
-              {userInfo.role === 'student' ? '学生' : '老师'}
+              {userInfo.role === 'student'
+                ? '学生'
+                : userInfo.role === 'teacher'
+                ? '老师'
+                : '管理员'}
             </span>
             <CaretDownOutlined />
           </span>

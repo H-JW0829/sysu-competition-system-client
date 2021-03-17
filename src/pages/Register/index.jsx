@@ -47,7 +47,6 @@ export default class extends Component {
 
   handleSubmit = async (values) => {
     if (this.state.loading) return;
-
     const {
       password,
       confirmPassword,

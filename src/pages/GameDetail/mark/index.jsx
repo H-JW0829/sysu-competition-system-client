@@ -102,8 +102,8 @@ export default class Mark extends Component {
   submitScore = async () => {
     // console.log(this.scoreRef.current.state.value, 'eee');
     const score = Number(this.scoreRef.current.state.value);
-    if (Object.is(score, NaN)) {
-      message.warning('格式不正确', 1);
+    if (Object.is(score, NaN) || score < 0 || score > 100) {
+      message.warning('分数不正确', 1);
       return;
     }
     const response = await post('/competition/submitScore', {
