@@ -1,8 +1,9 @@
 # sysu-competition-system
 
 ## 中山大学计算机竞赛系统客户端
-管理端：https://github.com/H-JW0829/sysu-competition-system-admin  
-后端：https://github.com/H-JW0829/sysu-competition-system-server  
+### 技术栈：React+Antd+Node.js+MongoDB  
+### 管理端：https://github.com/H-JW0829/sysu-competition-system-admin  
+### 后端：https://github.com/H-JW0829/sysu-competition-system-server  
 ### 功能
 1.登录注册  
 2.忘记密码  
@@ -14,3 +15,4 @@
 8.查看成绩  
 9.下载作品  
 10.线上评分  
+11.论坛功能  
