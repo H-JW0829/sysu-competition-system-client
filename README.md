@@ -16,3 +16,7 @@
 9.下载作品  
 10.线上评分  
 11.论坛功能  
+
+### 启动命令
+npm install  
+npm run start  
