@@ -1,8 +1,8 @@
 # sysu-competition-system
 
 ## 中山大学计算机竞赛系统客户端
-管理端：https://github.com/H-JW0829/sysu-competition-system-admin
-后端：https://github.com/H-JW0829/sysu-competition-system-server
+管理端：https://github.com/H-JW0829/sysu-competition-system-admin  
+后端：https://github.com/H-JW0829/sysu-competition-system-server  
 ### 功能
 1.登录注册  
 2.忘记密码  
